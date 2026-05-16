@@ -1,0 +1,8 @@
+Appium-Python-Client
+pytest
+pytest-html
+allure-pytest
+pytest-xdist
+python-dotenv
+faker
+selenium
