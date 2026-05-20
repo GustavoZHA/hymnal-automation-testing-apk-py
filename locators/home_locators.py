@@ -3,22 +3,37 @@ from appium.webdriver.common.appiumby import AppiumBy
 
 class HomeLocators:
 
+    TITLE = (
+        AppiumBy.ID,
+        "com.pentecostal.himnarioprincipal:id/title"
+    )
+
     HYMNAL_BUTTON = (
-        AppiumBy.ACCESSIBILITY_ID,
-        "Himnario"
+        AppiumBy.ID,
+        "com.pentecostal.himnarioprincipal:id/bHimnario"
     )
 
     SEARCH_BUTTON = (
-        AppiumBy.ACCESSIBILITY_ID,
-        "Buscar"
+        AppiumBy.ID,
+        "com.pentecostal.himnarioprincipal:id/bBuscar"
     )
 
     FAVORITES_BUTTON = (
-        AppiumBy.ACCESSIBILITY_ID,
-        "Favoritos"
+        AppiumBy.ID,
+        "com.pentecostal.himnarioprincipal:id/bFavoritos"
+    )
+
+    KNOWN_BUTTON = (
+        AppiumBy.ID,
+        "com.pentecostal.himnarioprincipal:id/bConocidos"
     )
 
     CLASSIFICATION_BUTTON = (
-        AppiumBy.ACCESSIBILITY_ID,
-        "Clasificación de Himnos"
+        AppiumBy.ID,
+        "com.pentecostal.himnarioprincipal:id/bHPredicacion"
+    )
+
+    PERSONALIZED_LISTS_BUTTON = (
+        AppiumBy.ID,
+        "com.pentecostal.himnarioprincipal:id/bCreateList"
     )
