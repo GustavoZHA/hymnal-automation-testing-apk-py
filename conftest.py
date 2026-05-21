@@ -1,7 +1,18 @@
+import os
+
+import allure
 import pytest
 from drivers.driver_factory import DriverFactory
 from utils.screenshots import ScreenshotUtil
 from utils.video_recorder import VideoRecorder
+
+
+def attach_file_to_allure(path, name, attachment_type):
+    if path and os.path.exists(path):
+        try:
+            allure.attach.file(path, name=name, attachment_type=attachment_type)
+        except Exception:
+            pass
 
 
 @pytest.fixture(scope="function")
@@ -37,10 +48,20 @@ def pytest_runtest_makereport(item, call):
 
         if driver:
             try:
-                ScreenshotUtil.capture(driver, item.name)
+                screenshot_path = ScreenshotUtil.capture(driver, item.name)
+                attach_file_to_allure(
+                    screenshot_path,
+                    f"Screenshot - {item.name}",
+                    allure.attachment_type.PNG,
+                )
             except Exception:
                 pass
             try:
-                VideoRecorder.stop_and_save(driver, item.name)
+                video_path = VideoRecorder.stop_and_save(driver, item.name)
+                attach_file_to_allure(
+                    video_path,
+                    f"Video - {item.name}",
+                    allure.attachment_type.MP4,
+                )
             except Exception:
                 pass

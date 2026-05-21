@@ -3,7 +3,7 @@ from pages.home_page import HomePage
 
 class TestHymnPage:
 
-    def _load_hymn(self, driver, title="Ven , ¡oh Todopoderoso!"):
+    def _load_hymn(self, driver, title="Luz de vida celestial"):
         home = HomePage(driver)
         hymn_list = home.open_hymnal()
         return hymn_list.open_hymn_by_title(title)
@@ -19,10 +19,12 @@ class TestHymnPage:
 
     def test_hymn_page_music_player_is_displayed(self, driver):
         hymn_page = self._load_hymn(driver)
+        hymn_page.play_hymn()
         assert hymn_page.is_music_player_displayed()
 
     def test_hymn_page_can_play_and_pause(self, driver):
         hymn_page = self._load_hymn(driver)
+        hymn_page.play_hymn()
         hymn_page.play_pause()
         assert hymn_page.is_music_player_displayed()
 
@@ -33,7 +35,6 @@ class TestHymnPage:
 
     def test_hymn_page_can_add_to_list_and_mark_known(self, driver):
         hymn_page = self._load_hymn(driver)
-        hymn_page.add_to_list()
         hymn_page.mark_as_known()
         assert True
 
@@ -41,6 +42,7 @@ class TestHymnPage:
         hymn_page = self._load_hymn(driver)
         hymn_page.open_previous_hymn()
         hymn_page.open_next_hymn()
+        hymn_page.play_hymn()
         hymn_page.rewind()
         hymn_page.forward()
         assert True

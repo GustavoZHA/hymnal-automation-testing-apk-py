@@ -15,4 +15,4 @@ class TestHymnList:
         hymn_list = home.open_hymnal()
         hymn_page = hymn_list.open_hymn_by_number(1)
 
-        assert hymn_page.get_title() != "1. Ven , ¡oh Todopoderoso!"
+        assert hymn_page.get_title() == "1. Ven , ¡oh Todopoderoso!"

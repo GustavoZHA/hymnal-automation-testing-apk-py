@@ -91,6 +91,8 @@ pytest -v
 pytest --alluredir=reports/allure-results
 ```
 
+> On test failures, screenshots and video recordings are attached automatically to the Allure report.
+
 ## Open Allure report
 
 ```bash
