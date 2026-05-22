@@ -1,10 +1,10 @@
 from appium.webdriver.common.appiumby import AppiumBy
-from pages.base_page import BasePage
+from pages.components.menu_component import MenuComponent
 from pages.hymn_page import HymnPage
 from locators.hymn_list_locators import HymnListLocators
 
 
-class HymnListPage(BasePage):
+class HymnListPage(MenuComponent):
 
     def open_hymn_by_title(self, title):
         hymn_locator = (
