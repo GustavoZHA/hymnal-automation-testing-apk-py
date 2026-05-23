@@ -6,6 +6,11 @@ from locators.hymn_list_locators import HymnListLocators
 
 class HymnListPage(MenuComponent):
 
+    def get_all_hymn_names(self):
+        """Get all hymn titles/names from the list"""
+        hymn_elements = self.driver.find_elements(*HymnListLocators.HYMN_TITLE)
+        return [element.text for element in hymn_elements]
+
     def open_hymn_by_title(self, title):
         hymn_locator = (
             AppiumBy.XPATH,

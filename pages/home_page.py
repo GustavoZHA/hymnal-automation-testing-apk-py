@@ -1,11 +1,13 @@
 from pages.base_page import BasePage
 from locators.home_locators import HomeLocators
+from pages.components.menu_component import MenuComponent
 from pages.hymn_list_page import HymnListPage
 from pages.classification_page import ClassificationPage
 from pages.search_page import SearchPage
+from pages.list_personality_page import ListPersonalityPage
 
 
-class HomePage(BasePage):
+class HomePage(MenuComponent):
 
     def open_hymnal(self):
         self.click(HomeLocators.HYMNAL_BUTTON)
@@ -25,8 +27,9 @@ class HomePage(BasePage):
         self.click(HomeLocators.CLASSIFICATION_BUTTON)
         return ClassificationPage(self.driver)
 
-    def open_personalized_lists(self):
+    def open_list_personality(self):
         self.click(HomeLocators.PERSONALIZED_LISTS_BUTTON)
+        return ListPersonalityPage(self.driver)
 
     def get_title(self):
         return self.get_text(HomeLocators.TITLE)

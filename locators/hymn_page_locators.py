@@ -82,3 +82,23 @@ class HymnPageLocators:
         AppiumBy.XPATH,
         "//android.widget.LinearLayout[@resource-id='com.pentecostal.himnarioprincipal:id/hymn']//android.widget.TextView"
     )
+
+    POPUP_TITLE = (
+        AppiumBy.ID,
+        "com.pentecostal.himnarioprincipal:id/popupTitle"
+    )
+
+    POPUP_LIST_NAME_TEXT = (
+        AppiumBy.ID,
+        "com.pentecostal.himnarioprincipal:id/name_record_pop"
+    )
+
+    POPUP_DELETE_BUTTON = (
+        AppiumBy.ID,
+        "com.pentecostal.himnarioprincipal:id/b_delete_list_pop"
+    )
+
+    POPUP_CLOSE_BUTTON = (
+        AppiumBy.ID,
+        "com.pentecostal.himnarioprincipal:id/popupCloseButton"
+    )

@@ -1,8 +1,12 @@
 from pages.base_page import BasePage
 from locators.hymn_page_locators import HymnPageLocators
+from appium.webdriver.common.appiumby import AppiumBy
+from selenium.webdriver.support import expected_conditions as EC
+
+from pages.components.menu_component import MenuComponent
 
 
-class HymnPage(BasePage):
+class HymnPage(MenuComponent):
 
     def get_title(self):
         return self.get_text(HymnPageLocators.TITLE)
@@ -21,6 +25,7 @@ class HymnPage(BasePage):
 
     def add_to_list(self):
         self.click(HymnPageLocators.ADD_TO_LIST_BUTTON)
+        return self
 
     def mark_as_known(self):
         self.click(HymnPageLocators.KNOWN_BUTTON)
@@ -46,3 +51,25 @@ class HymnPage(BasePage):
     def get_verse_texts(self):
         elements = self.driver.find_elements(*HymnPageLocators.VERSE_TEXTS)
         return [element.text for element in elements]
+
+    def is_add_to_list_popup_displayed(self):
+        """Check if the add to list popup is displayed"""
+        return self.is_displayed(HymnPageLocators.POPUP_LIST_NAME_TEXT)
+
+    def get_popup_title(self):
+        """Get the title of the add to list popup"""
+        return self.get_text(HymnPageLocators.POPUP_TITLE)
+
+    def select_list_from_popup(self, list_name):
+        """Select a specific list from the popup by name"""
+        list_name_locator = (
+            AppiumBy.XPATH,
+            f"//android.widget.TextView[@resource-id='com.pentecostal.himnarioprincipal:id/name_record_pop' and @text='{list_name}']"
+        )
+        self.click(list_name_locator)
+        return self
+
+    def close_popup(self):
+        """Close the add to list popup"""
+        self.click(HymnPageLocators.POPUP_CLOSE_BUTTON)
+        return self
