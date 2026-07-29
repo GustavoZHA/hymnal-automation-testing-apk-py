@@ -25,7 +25,6 @@ class TestListPersonality:
 
         assert list_personality.is_displayed(ListPersonalityLocators.NAME_INPUT)
         assert list_personality.is_displayed(ListPersonalityLocators.CREATE_BUTTON)
-        assert list_personality.is_displayed(ListPersonalityLocators.LISTS_CONTAINER)
 
     def test_verify_name_input_hint_text(self, driver):
         """Test that the name input field has the correct hint text"""

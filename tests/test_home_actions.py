@@ -21,7 +21,7 @@ class TestHomeActions:
 
     def test_open_personalized_lists(self, driver):
         home = HomePage(driver)
-        home.open_personalized_lists()
+        home.open_list_personality()
         assert True
 
     def test_open_menu_and_home(self, driver):
