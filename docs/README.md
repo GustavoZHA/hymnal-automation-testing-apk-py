@@ -1,10 +1,11 @@
-# Documentación del Proyecto Hymnal Automation
+# Technical Documentation
 
-Esta carpeta contiene la documentación técnica, guías de arquitectura y configuración para el framework de automatización móvil con **Appium**, **Python** e integración con **Maestro MCP**.
+This directory contains technical architecture guides, testing matrices, and tool configuration for the **Hymnal Mobile App Automation Framework** (Appium, Python, Pytest, Allure BDD, and Maestro MCP).
 
-## Contenido
+---
 
-- [Diagramas de Flujo y Entendimiento de la App](flujo.md): Mapa conceptual, diagramas de flujo Mermaid y navegación de la aplicación.
-- [Matriz de Escenarios de Prueba](test_scenarios.md): Inventario centralizado y seguimiento de los 38 casos de prueba automatizados (Allure BDD).
-- [Integración con Maestro MCP](maestro_mcp_integration.md): Guía de instalación y configuración de Maestro MCP para inspeccionar elementos y vistas en apps Kotlin/XML.
-- [Estructura del Framework](architecture.md): Detalle de la arquitectura Page Object Model (POM), capas de locators, drivers y fixtures.
+## 📑 Contents
+
+- [**Master Test Scenarios Matrix**](test_scenarios.md): Comprehensive inventory of the 38 automated BDD test scenarios.
+- [**Application Architecture & Flowcharts**](flujo.md): Interactive Mermaid diagrams and deep understanding of the app navigation and business rules.
+- [**Maestro MCP Integration Guide**](maestro_mcp_integration.md): Setup, configuration, and best practices for interactive Android UI inspection using Maestro MCP.

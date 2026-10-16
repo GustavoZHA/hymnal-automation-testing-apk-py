@@ -16,33 +16,37 @@ def load_expected_classification():
         return json.load(file)
 
 
-@allure.epic("Himnario Móvil")
+@allure.epic("Hymnal Mobile App")
 @allure.feature("Clasificación")
 class TestClassification:
 
-    @allure.title("SCN-CLA-001: Verificar apertura de la pantalla de Clasificación y su título")
+    @allure.title("SCN-CLA-001: Open Thematic Classification screen and verify title")
     def test_open_classification_screen(self, driver):
-        with allure.step("Dado que se cargan los datos esperados de clasificación"):
+        with allure.step("Given the expected classification data is loaded from test resources"):
             expected = load_expected_classification()
 
-        with allure.step("Cuando el usuario ingresa a la sección de Clasificación desde el Home"):
+        with allure.step("When the user opens the Thematic Classification screen from Home"):
             home = HomePage(driver)
             classification = home.open_classification()
 
-        with allure.step("Entonces el título de la pantalla debe coincidir con el esperado"):
+        with allure.step("Then the screen title must match the expected title"):
             actual_title = classification.get_title()
-            assert actual_title == expected["title"], f"Se esperaba '{expected['title']}' pero se obtuvo '{actual_title}'"
+            assert actual_title == expected["title"], (
+                f"Expected title '{expected['title']}', but got '{actual_title}'"
+            )
 
-    @allure.title("SCN-CLA-002: Abrir y verificar la visualización de una categoría específica")
+    @allure.title("SCN-CLA-002: Open and verify display of a specific thematic category")
     def test_open_classification_category(self, driver):
-        with allure.step("Dado que se obtiene una categoría de prueba desde el archivo de datos"):
+        with allure.step("Given a thematic category is retrieved from the dataset"):
             expected = load_expected_classification()
             category = expected["categories"][5]
 
-        with allure.step(f"Cuando el usuario abre Clasificación y selecciona la categoría '{category}'"):
+        with allure.step(f"When the user opens Classification and selects category '{category}'"):
             home = HomePage(driver)
             classification = home.open_classification()
             classification.open_category(category)
 
-        with allure.step(f"Entonces la categoría '{category}' debe estar desplegada correctamente"):
-            assert classification.is_category_displayed(category), f"La categoría '{category}' no se mostró en pantalla"
+        with allure.step(f"Then category '{category}' is displayed properly"):
+            assert classification.is_category_displayed(category), (
+                f"Category '{category}' was not displayed on the screen"
+            )

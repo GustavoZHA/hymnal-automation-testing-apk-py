@@ -1,26 +1,26 @@
-# 🗺️ Arquitectura y Diagrama de Flujo de la Aplicación
+# 🗺️ Application Architecture and Navigation Flowchart
 
-Este documento detalla el **entendimiento funcional y de navegación** de la aplicación móvil **Himnario Pentecostal** (`com.pentecostal.himnarioprincipal`), basado en la inspección de vistas XML, Page Objects, locators y casos de prueba automatizados.
-
----
-
-## 1. Visión General de la Aplicación
-
-La aplicación es un himnario digital nativo para Android (Kotlin + XML) orientado a la congregación, directores de culto y músicos. Permite:
-- Consultar himnos organizados por número y título.
-- Leer letras y estrofas completas.
-- Reproducir pistas de audio acompañadas de controles multimedia.
-- Marcar himnos como **Favoritos** y **Conocidos**.
-- Crear y gestionar **Listas Personalizadas** para reuniones o cultos específicos.
-- Explorar himnos agrupados por **Clasificación Temática** (Devocionales, Juventud, Niños, Santa Cena, etc.).
-- Buscar himnos mediante filtros de texto o número con validaciones de entrada.
-- Ajustar configuración visual y tipográfica (tamaño de fuente, tema).
+This document details the **functional understanding and navigation architecture** of the **Himnario Pentecostal** Android mobile application (`com.pentecostal.himnarioprincipal`), based on the inspection of XML layouts, Page Objects, locators, and automated test scenarios.
 
 ---
 
-## 2. Diagrama de Navegación Principal (Flujo Global)
+## 1. Application Overview
 
-El siguiente diagrama muestra el mapa general de pantallas y cómo el **Detalle del Himno** actúa como el punto de convergencia funcional de la app:
+The mobile application is a native Android hymnal (Kotlin + XML) designed for congregation members, worship leaders, and musicians. Key capabilities include:
+- Browsing hymns organized by number and title.
+- Reading complete lyrics, choruses, and stanzas.
+- Streaming audio accompaniments with multimedia playback controls.
+- Marking hymns as **Favoritos** (Favorites) and **Conocidos** (Known).
+- Creating and managing **Listas Personalizadas** (Custom Playlists) for services or practice.
+- Exploring hymns organized by **Clasificación Temática** (Thematic Classification: Devotional, Youth, Children, Communion, etc.).
+- Searching hymns via text or number filters with input validation.
+- Customizing typography and visual theme settings (font size, dark/light theme).
+
+---
+
+## 2. Global Navigation Diagram
+
+The following diagram maps the high-level screens and shows how the **Detalle del Himno** (Hymn Detail) acts as the core functional hub of the app:
 
 ```mermaid
 flowchart TD
@@ -61,11 +61,11 @@ flowchart TD
 
 ---
 
-## 3. Flujos Detallados por Módulo
+## 3. Detailed Functional Flows by Module
 
-### 3.1. Flujo de Búsqueda y Validaciones de Entrada
+### 3.1. Search Flow & Input Validations
 
-La pantalla de búsqueda cuenta con reglas estrictas de validación que se comunican al usuario mediante mensajes Toast del sistema:
+The search screen implements strict validation rules communicated to users via system Toast notifications:
 
 ```mermaid
 flowchart TD
@@ -92,9 +92,9 @@ flowchart TD
 
 ---
 
-### 3.2. Flujo del Detalle del Himno y Reproductor Multimedia
+### 3.2. Hymn Detail & Multimedia Player Flow
 
-El detalle del himno es la vista más rica de la aplicación, ya que integra lectura, audio y categorización personal:
+The hymn detail view is the most feature-rich screen in the application, integrating text rendering, audio playback, and personal list management:
 
 ```mermaid
 flowchart TD
@@ -120,9 +120,9 @@ flowchart TD
 
 ---
 
-## 4. Flujo de Listas Personalizadas (Gestión CRUD)
+## 4. Custom Playlists Flow (CRUD Management)
 
-Permite al usuario crear listas temáticas para servicios de alabanza y asociarles himnos:
+Enables users to create thematic playlists for worship services and assign hymns to them:
 
 ```mermaid
 flowchart TD
@@ -149,25 +149,25 @@ flowchart TD
 
 ---
 
-## 5. Clasificación Temática
+## 5. Thematic Classification Flow
 
-La aplicación incluye un índice temático basado en el contenido doctrinal o de ocasión de cada himno:
+The application provides a categorical index grouping hymns by occasion or doctrinal theme:
 
 ```mermaid
 flowchart TD
     C_Start(["Acceso a 'Clasificación'"]) --> C_Scroll["Vista scrollable 'scrollCustom' con categorías"]
 
-    C_Scroll --> C_Cat1["1. Himnos Congregacionales para Reuniones Generales"]
-    C_Scroll --> C_Cat2["2. Himnos para Servicio de Oración"]
-    C_Scroll --> C_Cat3["3. Himnos para Cultos Devocionales"]
-    C_Scroll --> C_Cat4["4. Himnos para Predicación al Aire Libre"]
-    C_Scroll --> C_Cat5["5. Himnos de Marcha para Soldados de Jesucristo"]
-    C_Scroll --> C_Cat6["6. Himnos para Niños"]
-    C_Scroll --> C_Cat7["7. Himnos para la Juventud"]
-    C_Scroll --> C_Cat8["8. Himnos de Bienvenida"]
-    C_Scroll --> C_Cat9["9. Himnos para Santa Cena"]
-    C_Scroll --> C_Cat10["10. Himnos para Consagración de Templos"]
-    C_Scroll --> C_Cat11["11. Himnos para Ceremonia de Matrimonio"]
+    C_Cat1["1. Himnos Congregacionales para Reuniones Generales"]
+    C_Cat2["2. Himnos para Servicio de Oración"]
+    C_Cat3["3. Himnos para Cultos Devocionales"]
+    C_Cat4["4. Himnos para Predicación al Aire Libre"]
+    C_Cat5["5. Himnos de Marcha para Soldados de Jesucristo"]
+    C_Cat6["6. Himnos para Niños"]
+    C_Cat7["7. Himnos para la Juventud"]
+    C_Cat8["8. Himnos de Bienvenida"]
+    C_Cat9["9. Himnos para Santa Cena"]
+    C_Cat10["10. Himnos para Consagración de Templos"]
+    C_Cat11["11. Himnos para Ceremonia de Matrimonio"]
 
     C_Cat1 & C_Cat2 & C_Cat3 & C_Cat4 & C_Cat5 & C_Cat6 & C_Cat7 & C_Cat8 & C_Cat9 & C_Cat10 & C_Cat11 --> C_Filter["Filtra y muestra los himnos de la categoría elegida"]
     C_Filter --> C_Detail(["Abrir Detalle del Himno"])
@@ -175,9 +175,9 @@ flowchart TD
 
 ---
 
-## 6. Configuración (Ajustes de la App)
+## 6. Settings (App Preferences)
 
-Accesible desde el menú lateral o actividad dedicada:
+Accessible from the navigation drawer or dedicated settings activity:
 
 ```mermaid
 flowchart TD
@@ -193,7 +193,7 @@ flowchart TD
 
 ---
 
-## 7. Modelo Conceptual de Entidades y Estados
+## 7. Conceptual Entity & State Model
 
 ```mermaid
 erDiagram
@@ -229,7 +229,7 @@ erDiagram
 
 ---
 
-## 8. Sección de Notas y Correcciones del Usuario
+## 8. Author Notes & Custom Observations
 
 > [!NOTE]
-> Esta sección está reservada para tus observaciones, correcciones de flujos no evidentes en los XML/PageObjects, o detalles de lógica de negocio adicional que desees afinar.
+> This section is reserved for user-specific architectural observations, adjustments to Android layouts, or edge-case business logic refinements.

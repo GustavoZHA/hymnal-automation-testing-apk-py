@@ -1,45 +1,45 @@
 ---
 name: create-automated-test
-description: Skill principal y orquestador para la creación de pruebas automatizadas en Hymnal Mobile App. Coordina los 5 skills modulares del flujo de trabajo.
+description: Core orchestrator skill for creating automated mobile tests in Hymnal Mobile App. Coordinates the 5 modular workflow skills.
 ---
 
-# 🚀 Skill Principal: Creación de Pruebas Automatizadas
+# 🚀 Core Skill: Automated Test Creation
 
-Este es el **skill orquestador central** para diseñar, codificar, ejecutar y registrar nuevos casos de prueba automatizados en el proyecto **Hymnal Mobile App** (Appium + Pytest + POM + Allure BDD).
+This is the **central orchestrator skill** designed to conceive, design, implement, execute, and document new automated test cases for the **Hymnal Mobile App** (Appium + Pytest + POM + Allure BDD).
 
-El proceso se apoya en **5 skills modulares especializados**:
+The workflow is structured into **5 specialized modular skills**:
 
 ---
 
-## 🗺️ Mapa del Flujo de Trabajo
+## 🗺️ Workflow Architecture
 
 ```mermaid
 flowchart LR
-    S1["definir-escenario-bdd"] --> S2["inspeccionar-locators"]
-    S2 --> S3["implementar-page-object"]
-    S3 --> S4["escribir-test-allure"]
-    S4 --> S5["verificar-ejecucion-pruebas"]
+    S1["define-bdd-scenario"] --> S2["inspect-locators"]
+    S2 --> S3["implement-page-object"]
+    S3 --> S4["write-allure-test"]
+    S4 --> S5["verify-test-execution"]
 ```
 
 ---
 
-## 📚 Índice de Skills Modulares
+## 📚 Modular Skills Index
 
-| Skill | Propósito | Enlace al Skill |
+| Skill | Purpose | Link |
 |---|---|---|
-| **`definir-escenario-bdd`** | Definición del escenario BDD: Nomenclatura normalizada (`SCN-xxx`), Título claro autoexplicativo, Given/When/Then y registro inmediato en `docs/test_scenarios.md`. | [SKILL.md](../definir-escenario-bdd/SKILL.md) |
-| **`inspeccionar-locators`** | Inspección de vistas XML y definición de tuplas de locators con jerarquía de prioridad (`ACCESSIBILITY_ID` > `ID` > `UiAutomator` > `XPATH`). | [SKILL.md](../inspeccionar-locators/SKILL.md) |
-| **`implementar-page-object`** | Implementación de Page Objects en `pages/` heredando de `BasePage` o `MenuComponent` con esperas explícitas y sin aserciones. | [SKILL.md](../implementar-page-object/SKILL.md) |
-| **`escribir-test-allure`** | Codificación del test en `tests/test_<modulo>.py` con decoradores Allure BDD, código SCN en `@allure.title` y bloques `allure.step`. | [SKILL.md](../escribir-test-allure/SKILL.md) |
-| **`verificar-ejecucion-pruebas`** | Verificación técnica de recolección (`pytest --collect-only`), ejecución individual y validación visual con Allure Report. | [SKILL.md](../verificar-ejecucion-pruebas/SKILL.md) |
+| **`define-bdd-scenario`** | BDD scenario definition: Normalized ID (`SCN-xxx`), self-explanatory title, Given/When/Then structure, and immediate registration in `docs/test_scenarios.md`. | [SKILL.md](../define-bdd-scenario/SKILL.md) |
+| **`inspect-locators`** | Android UI hierarchy inspection (XML/Maestro) and decoupled locator definition under strict priority (`ACCESSIBILITY_ID` > `ID` > `UiAutomator` > `XPATH`). | [SKILL.md](../inspect-locators/SKILL.md) |
+| **`implement-page-object`** | Page Object implementation in `pages/` inheriting from `BasePage` or `MenuComponent`, using explicit waits and no assertions. | [SKILL.md](../implement-page-object/SKILL.md) |
+| **`write-allure-test`** | Test authoring in `tests/test_<module>.py` with Allure BDD decorators, normalized SCN ID in `@allure.title`, and `allure.step` blocks. | [SKILL.md](../write-allure-test/SKILL.md) |
+| **`verify-test-execution`** | Technical verification protocol: dry collection (`pytest --collect-only`), isolated test run, and Allure Report inspection. | [SKILL.md](../verify-test-execution/SKILL.md) |
 
 ---
 
-## ⚡ Guía Rápida de Ejecución
+## ⚡ Execution Guide
 
-Para desarrollar una nueva prueba automatizada:
-1. Activar **`definir-escenario-bdd`** para acordar el alcance, asignar ID (`SCN-xxx`) y registrar el caso de inmediato en `docs/test_scenarios.md`.
-2. Utilizar **`inspeccionar-locators`** para obtener los IDs y selectores del layout.
-3. Invocar **`implementar-page-object`** para programar las acciones en los POM.
-4. Usar **`escribir-test-allure`** para codificar el test en Pytest incluyendo el código en el título.
-5. Ejecutar **`verificar-ejecucion-pruebas`** para correr la prueba y validar Allure.
+To implement a new automated test:
+1. Activate **`define-bdd-scenario`** to define the scope, assign the unique ID (`SCN-xxx`), and record it immediately in `docs/test_scenarios.md`.
+2. Use **`inspect-locators`** to extract element IDs and define robust selectors.
+3. Invoke **`implement-page-object`** to encapsulate user actions and navigation methods in the POM classes.
+4. Use **`write-allure-test`** to write declarative Pytest functions with Allure steps and title containing the scenario ID.
+5. Run **`verify-test-execution`** to validate collection and test execution.
