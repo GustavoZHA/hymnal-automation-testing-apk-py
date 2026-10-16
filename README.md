@@ -99,6 +99,12 @@ pytest --alluredir=reports/allure-results
 allure serve reports/allure-results
 ```
 
+## Documentation
+
+- [App Flows & Architecture](docs/flujo.md): Interactive Mermaid diagrams and end-to-end understanding of the app.
+- [Test Scenarios Matrix](docs/test_scenarios.md): Comprehensive inventory and status of all 38 automated BDD test scenarios.
+- [Maestro MCP Integration](docs/maestro_mcp_integration.md): Setup and usage guide for interactive UI exploration.
+
 ## Notes
 
 - Keep tests independent and reusable.

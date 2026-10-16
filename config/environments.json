@@ -1,0 +1,16 @@
+{
+  "local": {
+    "appium_server_url": "http://127.0.0.1:4723",
+    "platform_name": "Android",
+    "device_name": "Android Emulator",
+    "automation_name": "UiAutomator2",
+    "app_package": "com.pentecostal.himnarioprincipal",
+    "app_activity": "com.pentecostal.himnarioprincipal.MainActivity"
+  },
+  "ci": {
+    "appium_server_url": "http://127.0.0.1:4723",
+    "platform_name": "Android",
+    "device_name": "Android Emulator",
+    "automation_name": "UiAutomator2"
+  }
+}
