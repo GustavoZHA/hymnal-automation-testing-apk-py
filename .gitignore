@@ -1,12 +1,109 @@
-venv/
+# ==========================================
+# Python & Bytecode
+# ==========================================
 __pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ==========================================
+# Entornos Virtuales (Virtual Environments)
+# ==========================================
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# ==========================================
+# Pruebas, Cobertura y Reportes (Pytest & Allure)
+# ==========================================
 .pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
 reports/
 allure-results/
 allure-report/
-.env
+report.html
+log.html
+
+# ==========================================
+# Capturas de Pantalla, Videos y Logs
+# ==========================================
 *.log
+logs/
+*.mp4
+*.png
+!assets/**
+*.tmp
+*.bak
+
+# ==========================================
+# Variables de Entorno y Secretos
+# ==========================================
+.env
+.env.*
+!.env.example
+
+# ==========================================
+# Binarios Android y Volcados UI (Dumps)
+# ==========================================
 *.apk
+*.aab
+resources/app/*.apk
+!resources/app/.gitkeep
+view.xml
+*.dump
+
+# ==========================================
+# Maestro MCP / Herramientas de Inspección
+# ==========================================
+.maestro/
+maestro-report/
+
+# ==========================================
+# IDEs y Editores de Código
+# ==========================================
 .idea/
 .vscode/
-resources/app/*.apk
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# ==========================================
+# Archivos del Sistema Operativo (OS Files)
+# ==========================================
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
