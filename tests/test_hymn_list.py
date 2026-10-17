@@ -39,3 +39,15 @@ class TestHymnList:
         with allure.step(f"Then the hymn detail title matches '{expected_title}'"):
             actual_title = hymn_page.get_title()
             assert actual_title == expected_title, f"Expected title '{expected_title}', but got '{actual_title}'"
+
+    @allure.title("SCN-LIS-003: Verify general hymn list populates multiple hymn records")
+    def test_hymn_list_populates_records(self, driver):
+        with allure.step("Given the user opens the hymn list from Home"):
+            home = HomePage(driver)
+            hymn_list = home.open_hymnal()
+
+        with allure.step("When retrieving the hymn names visible in the list"):
+            hymn_names = hymn_list.get_all_hymn_names()
+
+        with allure.step("Then the list contains multiple hymn records"):
+            assert len(hymn_names) > 0, "No hymn records were populated in the hymn list"

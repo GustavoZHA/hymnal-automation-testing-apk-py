@@ -11,3 +11,8 @@ class MenuLocators:
         AppiumBy.ID,
         "com.pentecostal.himnarioprincipal:id/btn_home_button_bar"
     )
+
+    SETTINGS_ITEM = (
+        AppiumBy.ID,
+        "com.pentecostal.himnarioprincipal:id/nav_settings"
+    )

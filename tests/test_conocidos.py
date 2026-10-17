@@ -60,3 +60,26 @@ class TestConocidos:
 
         with allure.step("Then the user is back on the main Home screen"):
             assert isinstance(home_page, HomePage), "Expected instance of HomePage"
+
+    @allure.title("SCN-CON-004: Open hymn by title from Known Hymns screen")
+    def test_open_hymn_by_title_from_conocidos(self, driver):
+        hymn_title = "Ven , ¡oh Todopoderoso!"
+
+        with allure.step(f"Given hymn '{hymn_title}' is marked as known"):
+            home = HomePage(driver)
+            hymn_list = home.open_hymnal()
+            hymn_page = hymn_list.open_hymn_by_title(hymn_title)
+            hymn_page.mark_as_known()
+
+        with allure.step("And the user navigates to the 'Conocidos' section"):
+            hymn_page.click_home_button()
+            home.open_known()
+            conocidos = ConocidosPage(driver)
+
+        with allure.step(f"When opening hymn '{hymn_title}' from the Known list"):
+            opened_hymn_page = conocidos.open_hymn_by_title(hymn_title)
+
+        with allure.step(f"Then the hymn detail view displays title containing '{hymn_title}'"):
+            page_title = opened_hymn_page.get_title()
+            assert hymn_title in page_title, f"Expected hymn title '{hymn_title}' in '{page_title}'"
+            assert isinstance(opened_hymn_page, HymnPage), "Expected instance of HymnPage"

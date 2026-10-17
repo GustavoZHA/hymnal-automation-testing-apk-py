@@ -7,7 +7,18 @@
 [![Android](https://img.shields.io/badge/Platform-Android_Native-3DDC84?logo=android&logoColor=white)](https://developer.android.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-An enterprise-grade, scalable mobile test automation framework designed for native Android applications (Kotlin & XML layouts). Built with **Python**, **Appium (UiAutomator2)**, **Pytest**, **Page Object Model (POM)**, and **Allure BDD**, integrated with **Maestro MCP** for live UI exploration.
+An enterprise-grade, scalable mobile test automation framework designed for the **Himnario Pentecostal** mobile application—a native Android app developed with **Kotlin and XML layouts** (`RecyclerView`, `ViewBinding`, `MaterialToolbar`, and custom audio players).
+
+### 📱 Application Under Test & Purpose
+The **Himnario Pentecostal** app is a comprehensive mobile hymn book designed for congregational worship, personal devotion, and ministry preparation. Its core capabilities include:
+- **Hymn Repertoire & Lyrics**: Access to hundreds of categorized spiritual hymns with stanza-by-stanza lyrics and liturgical classifications.
+- **Embedded Audio Player**: Interactive music playback with seek, forward, rewind, and timestamp tracking for hymns with available musical accompaniment.
+- **Search & Filter Engine**: Fast lookup by hymn number or text keywords with strict client-side validation rules.
+- **Custom Playlists & Bookmarks**: Dynamic playlist creation and curation (e.g., *Predica*, *Alabanza*, *Adoración*, *Santa Cena*), alongside *Favoritos* and *Himnos Conocidos* tracking.
+- **Settings & Personalization**: Visual theme switching (Dark / Light modes), real-time font size scaling (preview and lyrics), musical note visibility toggles, and data backup import/export through structured JSON files.
+
+### 🎯 Automation Mission
+Through this framework, we automate the end-to-end validation of this native Android experience. We verify UI rendering, gesture navigation, audio playback states, data persistence, and input validations using **Python**, **Appium (UiAutomator2)**, **Pytest**, **Page Object Model (POM)**, and **Allure BDD**, empowered by **Maestro MCP** for live view hierarchy inspection and selector detection.
 
 ---
 
@@ -53,19 +64,19 @@ hymnal-automation-testing-apk-py/
 
 ## 📋 Master Test Coverage Matrix
 
-The suite covers **38 automated BDD scenarios** across 9 application modules:
+The suite covers **50 automated BDD scenarios** across 9 application modules:
 
 | Module | Feature | Scenarios | Primary Scenarios Covered |
 |---|---|:---:|---|
 | **Home** | `Home` | 7 | Navigation to all main sections, Drawer menu toggle, Home bar return |
-| **Hymn List** | `Lista de Himnos` | 2 | Open hymn by exact title, open hymn by index number |
-| **Hymn Detail** | `Detalle del Himno` | 7 | Title rendering, lyrics verification, audio player controls, favorite/known toggles |
-| **Favorites** | `Favoritos` | 3 | Add to favorites, open favorite hymn from list, return to Home |
-| **Known Hymns** | `Himnos Conocidos` | 3 | Mark as known, access from repertoire list, return to Home |
-| **Search** | `Búsqueda de Himnos` | 6 | Negative input validation (short text, range, alphanumeric, symbols) & search execution |
+| **Hymn List** | `Lista de Himnos` | 3 | Open hymn by exact title, open hymn by index number, populate multiple hymn records |
+| **Hymn Detail** | `Detalle del Himno` | 9 | Title rendering, lyrics verification, audio player controls, favorite/known toggles, Add to List popup lifecycle, player timestamp validation |
+| **Favorites** | `Favoritos` | 4 | Add to favorites, open favorite hymn by title/number from list, return to Home |
+| **Known Hymns** | `Himnos Conocidos` | 4 | Mark as known, access by title/number from repertoire list, return to Home |
+| **Search** | `Búsqueda de Himnos` | 7 | Negative input validation (short text, range, alphanumeric, symbols) & search execution by number and title query |
 | **Custom Playlists** | `Listas Personalizadas` | 7 | Create playlist, name input validation, delete playlist, associate hymns via modal |
-| **Classification** | `Clasificación` | 2 | Thematic category verification from JSON dataset, scrollable list rendering |
-| **Settings** | `Configuración` | 1 | Theme toggle, font size increment/decrement, audio visibility toggle |
+| **Classification** | `Clasificación` | 3 | Thematic category verification from JSON dataset, scrollable list rendering, total catalog count |
+| **Settings** | `Configuración` | 6 | Theme switching (Light/Dark), font size adjustment & preview text scaling, font size propagation to list & lyrics, music visibility note icons, JSON backup import & export dialog |
 
 > For the complete scenario inventory, see the [**Master Test Scenarios Matrix (docs/test_scenarios.md)**](docs/test_scenarios.md).
 

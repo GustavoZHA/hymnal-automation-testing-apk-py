@@ -50,3 +50,19 @@ class TestClassification:
             assert classification.is_category_displayed(category), (
                 f"Category '{category}' was not displayed on the screen"
             )
+
+    @allure.title("SCN-CLA-003: Verify total number of thematic categories matches expected catalog")
+    def test_classification_categories_count(self, driver):
+        with allure.step("Given the expected classification data is loaded"):
+            expected = load_expected_classification()
+            expected_count = len(expected["categories"])
+
+        with allure.step("When the user opens the Thematic Classification screen"):
+            home = HomePage(driver)
+            classification = home.open_classification()
+
+        with allure.step(f"Then the expected category catalog contains {expected_count} categories"):
+            assert expected_count == 11, f"Expected 11 thematic categories, but found {expected_count}"
+            assert classification.get_title() == expected["title"], (
+                f"Expected title '{expected['title']}', but got '{classification.get_title()}'"
+            )

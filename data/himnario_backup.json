@@ -1,0 +1,60 @@
+{
+  "appName": "HimnarioPentecostal",
+  "customLists": [
+    {
+      "ids": [8, 64, 141, 201, 248, 305],
+      "name": "Predica"
+    },
+    {
+      "ids": [36, 45, 93, 170],
+      "name": "Alabanza"
+    },
+    {
+      "ids": [10, 284, 309],
+      "name": "Juventud"
+    },
+    {
+      "ids": [13, 126, 141],
+      "name": "Adoración"
+    },
+    {
+      "ids": [53, 72, 280, 347],
+      "name": "Santa Cena"
+    },
+    {
+      "ids": [17, 217, 303],
+      "name": "Oración y Ayuno"
+    },
+    {
+      "ids": [48, 112, 120],
+      "name": "Misiones y Evangelismo"
+    },
+    {
+      "ids": [14, 102, 280, 288, 309, 333, 360],
+      "name": "Consagración"
+    },
+    {
+      "ids": [4, 82, 113, 143, 230, 302],
+      "name": "Agradecimiento"
+    },
+    {
+      "ids": [53, 80, 111, 143, 173, 175],
+      "name": "Bautismo"
+    },
+    {
+      "ids": [50, 184, 195],
+      "name": "Escuela Dominical"
+    },
+    {
+      "ids": [23, 136, 236, 275, 310],
+      "name": "Consuelo y Fortaleza"
+    },
+    {
+      "ids": [41, 194, 283],
+      "name": "Segunda Venida"
+    }
+  ],
+  "favoriteList": [45, 64, 75, 400],
+  "knowList": [2, 22, 34, 100],
+  "version": 1
+}

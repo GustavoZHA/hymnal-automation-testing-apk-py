@@ -58,3 +58,26 @@ class TestFavoritos:
 
         with allure.step("Then the user is back on the main Home screen"):
             assert isinstance(home_page, HomePage), "Expected instance of HomePage"
+
+    @allure.title("SCN-FAV-004: Open hymn by number from Favorites screen")
+    def test_open_hymn_by_number_from_favoritos(self, driver):
+        hymn_number = 1
+
+        with allure.step(f"Given hymn #{hymn_number} is added to favorites"):
+            home = HomePage(driver)
+            hymn_list = home.open_hymnal()
+            hymn_page = hymn_list.open_hymn_by_number(hymn_number)
+            hymn_page.toggle_favorite()
+
+        with allure.step("And the user navigates to the 'Favoritos' section"):
+            hymn_page.click_home_button()
+            home.open_favorites()
+            favoritos = FavoritosPage(driver)
+
+        with allure.step(f"When opening hymn #{hymn_number} from the Favorites list"):
+            opened_hymn_page = favoritos.open_hymn_by_number(hymn_number)
+
+        with allure.step(f"Then the hymn detail view displays number '{hymn_number}'"):
+            actual_title = opened_hymn_page.get_title()
+            assert f"{hymn_number}" in actual_title, f"Expected hymn number '{hymn_number}' in '{actual_title}'"
+            assert isinstance(opened_hymn_page, HymnPage), "Expected instance of HymnPage"

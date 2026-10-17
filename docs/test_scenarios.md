@@ -8,7 +8,7 @@ This document centralizes the full inventory of automated test scenarios for the
 
 ## 📊 Coverage Summary
 
-- **Total Automated Scenarios**: 38
+- **Total Automated Scenarios**: 50
 - **BDD Framework**: Allure BDD (`@allure.epic`, `@allure.feature`, `@allure.title` with normalized ID, and `allure.step` blocks)
 
 ---
@@ -16,14 +16,14 @@ This document centralizes the full inventory of automated test scenarios for the
 ## 📑 Module Index (Features)
 
 1. [Home & Quick Actions](#1-home--quick-actions) (7 scenarios)
-2. [General Hymn List](#2-general-hymn-list) (2 scenarios)
-3. [Hymn Detail & Audio Player](#3-hymn-detail--audio-player) (7 scenarios)
-4. [Favorites](#4-favorites) (3 scenarios)
-5. [Known Hymns](#5-known-hymns) (3 scenarios)
-6. [Hymn Search](#6-hymn-search) (6 scenarios)
+2. [General Hymn List](#2-general-hymn-list) (3 scenarios)
+3. [Hymn Detail & Audio Player](#3-hymn-detail--audio-player) (9 scenarios)
+4. [Favorites](#4-favorites) (4 scenarios)
+5. [Known Hymns](#5-known-hymns) (4 scenarios)
+6. [Hymn Search](#6-hymn-search) (7 scenarios)
 7. [Custom Playlists](#7-custom-playlists) (7 scenarios)
-8. [Thematic Classification](#8-thematic-classification) (2 scenarios)
-9. [Settings](#9-settings) (1 scenario)
+8. [Thematic Classification](#8-thematic-classification) (3 scenarios)
+9. [Settings](#9-settings) (6 scenarios)
 
 ---
 
@@ -53,6 +53,7 @@ This document centralizes the full inventory of automated test scenarios for the
 |---|---|---|---|
 | `SCN-LIS-001` | Open hymn list and select hymn by title | **Given** hymn list $\rightarrow$ **When** select "Ven , ¡oh Todopoderoso!" $\rightarrow$ **Then** title matches | `tests/test_hymn_list.py` |
 | `SCN-LIS-002` | Open hymn list and select hymn #1 by number | **Given** hymn list $\rightarrow$ **When** select hymn number 1 $\rightarrow$ **Then** title is "1. Ven , ¡oh Todopoderoso!" | `tests/test_hymn_list.py` |
+| `SCN-LIS-003` | Verify general hymn list populates multiple hymn records | **Given** hymn list $\rightarrow$ **When** retrieve hymn names $\rightarrow$ **Then** populated entries $> 0$ | `tests/test_hymn_list.py` |
 
 ---
 
@@ -70,6 +71,8 @@ This document centralizes the full inventory of automated test scenarios for the
 | `SCN-DET-005` | Toggle favorite status on hymn | **Given** hymn detail $\rightarrow$ **When** click favorite button $\rightarrow$ **Then** action completes successfully | `tests/test_hymn_page.py` |
 | `SCN-DET-006` | Mark hymn as known from detail screen | **Given** hymn detail $\rightarrow$ **When** click mark known button $\rightarrow$ **Then** action completes successfully | `tests/test_hymn_page.py` |
 | `SCN-DET-007` | Navigate previous/next hymns and control audio seek/rewind | **Given** hymn detail $\rightarrow$ **When** click prev/next and seek controls $\rightarrow$ **Then** controls respond | `tests/test_hymn_page.py` |
+| `SCN-DET-008` | Open and close the Add to List popup modal | **Given** hymn detail $\rightarrow$ **When** open and close popup modal $\rightarrow$ **Then** detail remains active | `tests/test_hymn_page.py` |
+| `SCN-DET-009` | Verify audio player timestamps are properly formatted | **Given** hymn detail $\rightarrow$ **When** click Play $\rightarrow$ **Then** timestamps match mm:ss and duration $> 0$ | `tests/test_hymn_page.py` |
 
 ---
 
@@ -83,6 +86,7 @@ This document centralizes the full inventory of automated test scenarios for the
 | `SCN-FAV-001` | Open Favorites screen from Home and verify title | **Given** Home $\rightarrow$ **When** open Favorites $\rightarrow$ **Then** title is 'Favoritos' | `tests/test_favoritos.py` |
 | `SCN-FAV-002` | Add hymn to favorites and verify opening from Favorites list | **Given** hymn marked as favorite $\rightarrow$ **When** open from Favorites $\rightarrow$ **Then** opens expected hymn detail | `tests/test_favoritos.py` |
 | `SCN-FAV-003` | Return to Home from Favorites screen | **Given** Favorites screen $\rightarrow$ **When** click Home $\rightarrow$ **Then** returns to Home page | `tests/test_favoritos.py` |
+| `SCN-FAV-004` | Open hymn by number from Favorites screen | **Given** hymn marked as favorite $\rightarrow$ **When** open by number $\rightarrow$ **Then** detail opens matching number | `tests/test_favoritos.py` |
 
 ---
 
@@ -96,6 +100,7 @@ This document centralizes the full inventory of automated test scenarios for the
 | `SCN-CON-001` | Open Known Hymns screen from Home and verify title | **Given** Home $\rightarrow$ **When** open Known Hymns $\rightarrow$ **Then** title is 'Conocidos' | `tests/test_conocidos.py` |
 | `SCN-CON-002` | Mark hymn as known and verify access from Known list | **Given** hymn #12 marked as known $\rightarrow$ **When** open #12 in Known $\rightarrow$ **Then** detail matches | `tests/test_conocidos.py` |
 | `SCN-CON-003` | Return to Home from Known Hymns screen | **Given** Known screen $\rightarrow$ **When** click Home $\rightarrow$ **Then** returns to Home page | `tests/test_conocidos.py` |
+| `SCN-CON-004` | Open hymn by title from Known Hymns screen | **Given** hymn marked as known $\rightarrow$ **When** open by title $\rightarrow$ **Then** detail opens matching title | `tests/test_conocidos.py` |
 
 ---
 
@@ -112,6 +117,7 @@ This document centralizes the full inventory of automated test scenarios for the
 | `SCN-BUS-004` | Validate warning Toast on invalid alphanumeric input | **Given** search screen $\rightarrow$ **When** query "12abc" $\rightarrow$ **Then** Toast: 'No se permite mezclar texto y números' | `tests/test_search_page.py` |
 | `SCN-BUS-005` | Validate warning Toast on invalid special characters | **Given** search screen $\rightarrow$ **When** query "@@@" $\rightarrow$ **Then** Toast: 'Solo se permite texto o números...' | `tests/test_search_page.py` |
 | `SCN-BUS-006` | Search hymn by number and open result | **Given** search screen $\rightarrow$ **When** query "1" $\rightarrow$ **Then** retrieves results and opens hymn detail | `tests/test_search_page.py` |
+| `SCN-BUS-007` | Search hymn by text query and open result | **Given** search screen $\rightarrow$ **When** query "Todopoderoso" $\rightarrow$ **Then** retrieves result and opens hymn detail | `tests/test_search_page.py` |
 
 ---
 
@@ -141,6 +147,7 @@ This document centralizes the full inventory of automated test scenarios for the
 |---|---|---|---|
 | `SCN-CLA-001` | Open Thematic Classification screen and verify title | **Given** expected JSON data $\rightarrow$ **When** open Classification $\rightarrow$ **Then** title matches | `tests/test_classification.py` |
 | `SCN-CLA-002` | Open and verify display of a specific thematic category | **Given** category from JSON $\rightarrow$ **When** click category $\rightarrow$ **Then** category is displayed | `tests/test_classification.py` |
+| `SCN-CLA-003` | Verify total number of thematic categories matches expected catalog | **Given** expected catalog $\rightarrow$ **When** count categories $\rightarrow$ **Then** exactly 11 categories verified | `tests/test_classification.py` |
 
 ---
 
@@ -151,7 +158,12 @@ This document centralizes the full inventory of automated test scenarios for the
 
 | ID | Scenario Title | BDD Summary | File |
 |---|---|---|---|
-| `SCN-SET-001` | Interaction with Settings configuration toggles | **Given** Settings $\rightarrow$ **When** toggle theme, font, and audio $\rightarrow$ **Then** controls respond | `tests/test_settings.py` |
+| `SCN-SET-001` | Switch theme between Light and Dark mode | **Given** Settings $\rightarrow$ **When** toggle dark and light modes $\rightarrow$ **Then** theme switches state | `tests/test_settings.py` |
+| `SCN-SET-002` | Adjust font size and verify preview text scaling | **Given** Settings $\rightarrow$ **When** increase/decrease font size $\rightarrow$ **Then** sample verse text scales proportionally | `tests/test_settings.py` |
+| `SCN-SET-003` | Verify font size adjustments apply to Hymn List and Hymn Verse | **Given** font adjusted in Settings $\rightarrow$ **When** open hymn list and hymn detail $\rightarrow$ **Then** hymn items and verse text reflect new size | `tests/test_settings.py` |
+| `SCN-SET-004` | Toggle visible music and verify music note icons in hymn list | **Given** Settings music switch $\rightarrow$ **When** toggle music visibility $\rightarrow$ **Then** music note icons appear/disappear on hymns | `tests/test_settings.py` |
+| `SCN-SET-005` | Import backup data from JSON file | **Given** backup file with custom lists and favorites $\rightarrow$ **When** import backup $\rightarrow$ **Then** custom playlists and favorites are restored | `tests/test_settings.py` |
+| `SCN-SET-006` | Open export backup dialog and verify export options | **Given** Settings $\rightarrow$ **When** click Exportar Backup $\rightarrow$ **Then** export selection dialog displays options and actions | `tests/test_settings.py` |
 
 ---
 

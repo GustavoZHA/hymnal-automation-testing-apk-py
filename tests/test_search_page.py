@@ -107,3 +107,27 @@ class TestSearchPage:
         with allure.step("Then the hymn detail view is displayed with a non-empty title"):
             actual_title = hymn_page.get_title()
             assert actual_title != "", "Hymn title in detail view is unexpectedly empty"
+
+    @allure.title("SCN-BUS-007: Search hymn by text query and open result")
+    def test_search_hymn_by_title_and_open_result(self, driver):
+        search_query = "Todopoderoso"
+        expected_title = "Ven , ¡oh Todopoderoso!"
+
+        with allure.step("Given the user is on the search screen"):
+            home = HomePage(driver)
+            search_page = home.open_search()
+
+        with allure.step(f"When searching for text '{search_query}'"):
+            search_page.search_hymn(search_query)
+
+        with allure.step("And matching results are returned"):
+            assert search_page.get_results_count() > 0, f"No results found when searching for '{search_query}'"
+
+        with allure.step(f"When opening hymn '{expected_title}' from the results list"):
+            hymn_page = search_page.open_hymn_by_title(expected_title)
+
+        with allure.step(f"Then the hymn detail view displays title containing '{expected_title}'"):
+            actual_title = hymn_page.get_title()
+            assert expected_title in actual_title, (
+                f"Expected '{expected_title}' in hymn title, but got '{actual_title}'"
+            )

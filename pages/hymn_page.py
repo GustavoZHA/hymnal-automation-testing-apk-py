@@ -52,6 +52,12 @@ class HymnPage(MenuComponent):
         elements = self.driver.find_elements(*HymnPageLocators.VERSE_TEXTS)
         return [element.text for element in elements]
 
+    def get_first_verse_height(self) -> int:
+        elements = self.driver.find_elements(*HymnPageLocators.VERSE_TEXTS)
+        if elements:
+            return elements[0].size.get("height", 0)
+        return 0
+
     def is_add_to_list_popup_displayed(self):
         """Check if the add to list popup is displayed"""
         return self.is_displayed(HymnPageLocators.POPUP_LIST_NAME_TEXT)

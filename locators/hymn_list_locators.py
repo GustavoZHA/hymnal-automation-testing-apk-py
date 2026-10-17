@@ -12,3 +12,8 @@ class HymnListLocators:
         AppiumBy.ID,
         "com.pentecostal.himnarioprincipal:id/number_record"
     )
+
+    MUSIC_ICON = (
+        AppiumBy.ID,
+        "com.pentecostal.himnarioprincipal:id/musicIcon"
+    )

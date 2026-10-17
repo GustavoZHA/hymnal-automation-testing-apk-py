@@ -94,3 +94,36 @@ class TestHymnPage:
 
         with allure.step("Then the player control interactions complete successfully"):
             assert hymn_page.driver is not None, "Driver instance should be valid"
+
+    @allure.title("SCN-DET-008: Open and close the Add to List popup modal")
+    def test_hymn_page_add_to_list_popup_lifecycle(self, driver):
+        with allure.step("Given a hymn detail view is open"):
+            hymn_page = self._load_hymn(driver)
+
+        with allure.step("When opening the 'Add to List' popup"):
+            hymn_page.add_to_list()
+
+        with allure.step("Then the popup modal title is displayed"):
+            popup_title = hymn_page.get_popup_title()
+            assert popup_title != "", "Add to List popup title is unexpectedly empty"
+
+        with allure.step("When closing the popup modal"):
+            hymn_page.close_popup()
+
+        with allure.step("Then the hymn detail view remains active"):
+            assert hymn_page.get_title() != "", "Hymn detail view should remain active after popup dismissal"
+
+    @allure.title("SCN-DET-009: Verify audio player timestamps are properly formatted")
+    def test_hymn_page_music_player_audio_durations(self, driver):
+        with allure.step("Given the hymn detail view is loaded"):
+            hymn_page = self._load_hymn(driver)
+
+        with allure.step("When clicking the Play button to activate the audio player"):
+            hymn_page.play_hymn()
+
+        with allure.step("Then current playback timestamp and total duration are displayed"):
+            current_time = hymn_page.get_current_playback_time()
+            total_duration = hymn_page.get_total_playback_duration()
+            assert ":" in current_time, f"Expected current time with mm:ss format, got: '{current_time}'"
+            assert ":" in total_duration, f"Expected total duration with mm:ss format, got: '{total_duration}'"
+            assert total_duration != "00:00", f"Total track duration should be greater than zero, got: '{total_duration}'"

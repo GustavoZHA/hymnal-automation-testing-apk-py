@@ -8,4 +8,6 @@ def get_android_options():
     options.device_name = Config.DEVICE_NAME
     options.automation_name = Config.AUTOMATION_NAME
     options.app = Config.APP_PATH
+    options.uiautomator2_server_launch_timeout = 60000
+    options.uiautomator2_server_install_timeout = 60000
     return options
