@@ -203,5 +203,5 @@ For complete integration and usage instructions, refer to the [**Maestro MCP Int
 
 ## 👤 Author
 
-**Gustavo Zepeda** — *Mobile Test Automation Engineer & SDET*  
+**Gustavo Huanca** — *Mobile Test Automation Engineer & SDET*  
 - GitHub: [@GustavoZHA](https://github.com/GustavoZHA)
